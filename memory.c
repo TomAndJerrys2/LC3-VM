@@ -50,3 +50,14 @@ enum {
 	OP_LEA,    // load effective address
 	OP_TRAP    // execute trap
 };
+
+// condition flags for logic and control flow
+// LC-3 only has three and evluates logic
+// based on the sign of the previous calc
+enum {
+	FL_POS = 1 << 0; // +ve
+	FL_ZRO = 1 << 0; // zero
+	FL_NEG = 1 << 2; // -ve
+};
+
+
