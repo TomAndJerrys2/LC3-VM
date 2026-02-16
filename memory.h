@@ -60,4 +60,20 @@ enum {
 	FL_NEG = 1 << 2; // -ve
 };
 
-
+/* ===> Function Prototypes <=== */
+void OP_BR_FUNC (void);
+void OP_ADD_FUNC (void);
+void OP_LD_FUNC (void);
+void OP_ST_FUNC  (void);
+void OP_JSR_FUNC (void);
+void OP_AND_FUNC (void);
+void OP_LDR_FUNC (void);
+void OP_STR_FUNC (void);
+void OP_RTI_FUNC (void);
+void OP_NOT_FUNC (void);
+void OP_LDI_FUNC (void);
+void OP_STI_FUNC (void);
+void OP_JMP_FUNC (void);
+void OP_RES_FUNC (void);
+void OP_LEA_FUNC (void);
+void OP_TRAP_FUNC (void);
