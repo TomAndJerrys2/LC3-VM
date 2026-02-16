@@ -23,67 +23,68 @@ int main(int argc, char** argv) {
 		// by 12 bits as described in header)
 		switch(output) {
 			case OP_ADD:
-				OP_ADD;
+				OP_ADD_FUNC();
 				break;
 
 			case OP_AND:
-				OP_AND;
+				OP_AND_FUNC();
 				break;
 
 			case OP_NOT:
-				OP_NOT;
+				OP_NOT_FUNC();
 				break;
 
 			case OP_BR:
-				OP_BR;
+				OP_BR_FUNC();
 				break;
 
 			case OP_JMP:
-				OP_JMP;
+				OP_JMP_FUNC();
+				break;
 
 			case OP_LD:
-				OP_LD;
+				OP_LD_FUNC();
 				break;
 
 			case OP_JSR:
-				OP_JSR;
+				OP_JSR_FUNC();
 				break;
 
 			case OP_LDI:
-				OP_LDI;
+				OP_LDI_FUNC();
 				break;
 
 			case OP_LDR:
-				OP_LDR;
+				OP_LDR_FUNC();
 				break;
 
 			case OP_LEA:
-				OP_LEA;
+				OP_LEA_FUNC();
 				break;
 
 			case OP_ST:
-				OP_ST;
+				OP_ST_FUNC();
 				break;
 
 			case OP_STI:
-				OP_STI;
+				OP_STI_FUNC();
 				break;
 
 			case OP_STR:
-				OP_STR;
+				OP_STR_FUNC();
 				break;
 
 			case OP_TRAP:
-				OP_TRAP;
+				OP_TRAP_FUNC();
 				break;
 
 			case OP_RES:
 			case OP_RTI:
 			default:
-				BAD_OP_CODE;
+				BAD_OP_CODE();
 				break;
 		}	
 	}
-
-	return 0;
+	
+	SHUTDOWN();
 }
