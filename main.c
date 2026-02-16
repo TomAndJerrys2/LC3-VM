@@ -105,3 +105,18 @@ int main(int argc, char** argv) {
 	
 	SHUTDOWN();
 }
+
+// depending if we encounter an immediate mode instruction
+// i.e a pre-stored value from 5 to 0 bits, we need to extend
+// the sign in order to provide a constant size as usually we 
+// are using register mode for normal operations, some operations
+// like incrementing and decrementing are good for immediate mode
+// hence this function 
+uint16_t SIGN_EXTEND(uint16_t x, int bit_count) {
+
+	if((x >> (bit_count - 1)) & 1) {
+		x |= (0xFFFF << bit_count);
+	}
+
+	return x;
+}
