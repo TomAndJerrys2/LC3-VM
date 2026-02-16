@@ -120,3 +120,20 @@ uint16_t SIGN_EXTEND(uint16_t x, int bit_count) {
 
 	return x;
 }
+
+// whenever a value is written to a register
+// update the condition flags to specify the values sign
+void update_flags(const uint16_t w_val) {
+	
+	if(registers[w_val] == 0) {
+		registers[R_COND] = FL_ZRO;
+	}
+	// a 1 in the left most bit indicates negative       
+	else if(registers[w_val] >> 15) {
+		registers[R_COND] = FL_NEG;
+	} 
+	
+	else {
+		registers[R_COND] = FL_POS;	
+	}
+}
