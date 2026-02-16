@@ -1,7 +1,24 @@
-include "memory.h"
+#include "memory.h"
+
+#include <stdio.h>
 
 int main(int argc, char** argv) {
-	
+
+	// Loads argument paths for VM images
+	if(argc < 2) {
+		printf("> LC3 [IMAGE_FILE1], [IMAGE_FILE2] ...\n");
+		exit(2);
+	}
+
+	for(size_t j = 1; j < argc; ++j) {
+		if(!read_image(argv[j])) {
+			printf("> Failed to load Image File: %s\n", 
+					argv[j]);
+
+			exit(1);
+		}
+	}
+
 	// one condition flag should only be specified at one 
 	// given moment, hence we set the z flag
 	registers[R_COND] = FL_ZERO;
