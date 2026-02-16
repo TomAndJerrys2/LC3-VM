@@ -26,7 +26,7 @@ enum {
 };
 
 // store the register values in an array
-uint16_t registers[Registers];
+uint16_t registers[R_COUNT];
 
 // 16 Op codes for LC3 - each are 12 + 4 bits
 // where the left 4 bits are used to store the code
