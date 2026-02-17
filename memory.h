@@ -1,8 +1,12 @@
 // Using LC3s native memory allocation space
 // which is based around 16bit architecture
-#define MEMORY_MAX (1 << 16) 
-uint16_t memory[MEMORY_MAX]
+#ifndef MEMORY_H
+#define MEMORY_H
 
+#include <stdint.h>
+#define MEMORY_MAX (1 << 16) 
+
+uint16_t memory[MEMORY_MAX];
 extern static uint16_t input_str;
 
 // LC3 has 10 registers - which isn't that big
@@ -93,3 +97,8 @@ void OP_TRAP_FUNC (void);
 /* ===> Operational Prototypes <=== */
 uint16_t SIGN_EXTEND(uint16_t, const int);
 void update_flags(const uint16_t);
+
+/* ===> Trap Function Prototypes <=== */
+void TRAP_PUTS_FUNC(void);
+
+#endif
