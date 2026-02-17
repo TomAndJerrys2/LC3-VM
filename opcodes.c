@@ -25,3 +25,17 @@ void OP_ADD_FUNC(void) {
 
 	update_flags(reg0);
 }
+
+void OP_LDI_FUNC(void) {
+	
+	// destination register - DR
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+
+	// extend the offset program counter by 9 bits
+	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
+
+	// add the offset to the current PC, read the memory address
+	// to return the final location
+	registers[reg0] = mem_read(mem_read(R_PC) + pc_offset);
+	update_flags(reg0);
+}	
