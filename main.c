@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 	enum { PC_START = 0x3000 };
 	registers[R_PC];
 
-	int running = 1;
+	running = 1;
 	while(running) {
 		
 		// fetch instruction

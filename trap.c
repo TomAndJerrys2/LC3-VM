@@ -147,3 +147,12 @@ void TRAP_PUTSP_FUNC(void) {
 	fflush(stdout);
 }
 
+void TRAP_HALT_FUNC(void) {
+	
+	// put halt to stdout, flush the buffer
+	// then exit safely
+	puts("HALT");
+	fflush(stdout);
+	
+	running = 0;
+}
