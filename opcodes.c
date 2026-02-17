@@ -71,7 +71,7 @@ void OP_AND_FUNC(void) {
 }
 
 // Bitwise NOT
-void OP_NOT_FUNC() {
+void OP_NOT_FUNC(void) {
 	
 	// Destination Register
 	uint16_t reg0 = (input_str >> 9) & 0x7;
@@ -80,5 +80,77 @@ void OP_NOT_FUNC() {
 	uint16_t reg1 = (input_str >> 6) & 0x7;
 
 	registers[reg1] = ~registers[reg1];
+	update_flags(reg0);
+}
+
+// Branch instruction 
+void OP_BR_FUNC(void) { 
+	
+	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
+
+	uint16_t cond_flag = (input_str >> 8) & 0x7;
+	
+	// comparing the condition flag with the condition
+	// flag registers value via bitwise AND
+	if(cond_flag & registers[R_COND]) {
+		registers[R_PC] += pc_offset;
+	}
+}
+
+// Jump instruction
+void OP_JMP_FUNC(void) {
+	// also handles RET as RET is a special case of
+	// the jump instruction whenever reg1 is 7
+	uint16_t reg1 = (input_str >> 6) & 7;
+
+	registers[R_PC] = registers[reg1];	
+}
+
+// Unlike Jump which handles the "Jumping" of 
+// instructions JSR jumps to a different register 
+// via an offset
+void OP_JSR_FUNC(void) {
+	
+	uint16_t long_flag = (input_str >> 11) & 1;
+
+	registers[R_R7] = registers[R_PC};
+	if(long_flag) {
+		uint16_t long_pc_offset = SIGN_EXTEND(input_str & 0x7FF, 11);
+		registers[R_PC] += long_pc_offset;
+	}
+
+	else {
+		uint16_t registers[R_PC] = registers[R1];
+	}
+}
+
+// Load instruction
+void OP_LOAD_FUNC(void) {
+	
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
+
+	registers[reg0] = mem_read(registers[R_PC] + pc_offset);
+	update_flags(reg0);
+}
+
+// Load Register
+void OP_LDR_FUNC(void) {
+	
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+	uint16_t reg1 = (input_str >> 6) & 0x7;
+
+	uint16_t offset = SIGN_EXTEND(input_str & 0x3F, 6);
+	registers[reg0] = mem_read(registers[reg1] + offset);
+	update_flags(reg0);
+}
+
+// Load effective address
+void OP_LEA_FUNC(void) {
+
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
+
+	registers[reg0] = registers[R_PC] + pc_offset;
 	update_flags(reg0);
 }
