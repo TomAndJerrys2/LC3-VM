@@ -67,7 +67,7 @@ enum {
 	FL_NEG = 1 << 2; // -ve
 };
 
-/* ===> Function Prototypes <=== */
+/* ===> Flag Function Prototypes <=== */
 void OP_BR_FUNC (void);
 void OP_ADD_FUNC (void);
 void OP_LD_FUNC (void);
@@ -84,3 +84,7 @@ void OP_JMP_FUNC (void);
 void OP_RES_FUNC (void);
 void OP_LEA_FUNC (void);
 void OP_TRAP_FUNC (void);
+
+/* ===> Operational Prototypes <=== */
+uint16_t SIGN_EXTEND(uint16_t, const int);
+void update_flags(const uint16_t);
