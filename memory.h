@@ -102,5 +102,7 @@ void update_flags(const uint16_t);
 void TRAP_PUTS_FUNC(void);
 void TRAP_GETC_FUNC(void);
 void TRAP_OUT_FUNC(void);
+void TRAP_IN_FUNC(void);
+void TRAP_PUTSP_FUNC(void);
 
 #endif

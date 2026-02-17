@@ -78,3 +78,72 @@ void TRAP_OUT_FUNC(void) {
 	// flush the stdout buffer once we are done!
 	fflush(stdout);
 }
+
+// prompt TTY for an input character from stdin
+void TRAP_IN_FUNC(void) {
+
+	printf("> Enter a character: ");
+	char c = getchar();
+	
+	// output the character entered to stdout
+	putc(c, stdout);
+	fflush(stdout);
+	// cast the char in R0 to be 16 bits wide
+	registers[R_R0] = (uint16_t)(c);
+
+	update_flags(R_R0);
+}
+
+// output characters in contiguous memory
+// i.e a string lmao
+void TRAP_PUTSP_FUNC(void) {
+	
+	// same logic. we point to the first character
+	// in memory, of the string. which is in R0
+	uint16_t * character = memory + registers[R_R0];
+	
+	// while character holds some value
+	while(*character) {
+		
+		// ---------------------------------------------- //
+		// notice how usually, especially on my		  //
+		// computers architecture which is Intel x86      //
+		// when debugging in GDB you'll often see the     //
+		// memory locations swapped for multi-byte	  //
+		// data types (especially common with strings)    //
+		// 						  //
+		// this is because the least or LITTLEst byte     //
+		// which is at the end is stored first. This is   //
+		// because x86 takes advantage of Little endian   //
+		// 						  //
+		// LC3s architecture - when working with multi    //
+		// byte types, takes advantage  of big endian     //
+		// which is more intuitive, hence we need to swap //
+		// our memory locations around so its correctly   //
+		// formatted 					  //
+		//  						  //
+		// ---------------------------------------------- //
+		
+		// get the currently pointed to character
+		// and compare it against the most signifigant
+		// byte
+		char char_one = (*character) & 0xFF;
+		putc(char1, stdout);
+		
+		// "advance" the character by shifting it 
+		// 8 bits to the right as memory is in hex format
+		// the first character is in a byte and so is the next
+		// and so on hence the shift
+		char char_two = (*character) >> 8;
+		
+		// if the next byte hold a value
+		if(char_two)
+			puts(char_two, stdout);
+
+		++character;
+	}	
+	
+	// flush the buffer
+	fflush(stdout);
+}
+
