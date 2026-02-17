@@ -137,9 +137,11 @@ void OP_LOAD_FUNC(void) {
 // Load Register
 void OP_LDR_FUNC(void) {
 	
+	// shift by 9 bits and compare with R7
 	uint16_t reg0 = (input_str >> 9) & 0x7;
 	uint16_t reg1 = (input_str >> 6) & 0x7;
-
+	
+	// offset the instruction by 6 bits before comparing
 	uint16_t offset = SIGN_EXTEND(input_str & 0x3F, 6);
 	registers[reg0] = mem_read(registers[reg1] + offset);
 	update_flags(reg0);
@@ -147,10 +149,49 @@ void OP_LDR_FUNC(void) {
 
 // Load effective address
 void OP_LEA_FUNC(void) {
-
+	
+	// shift to the right by 9 bits compare with R7
 	uint16_t reg0 = (input_str >> 9) & 0x7;
 	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
-
+	
+	// the determined register in ...[reg0] is set to
+	// the program counter and a certain offset
 	registers[reg0] = registers[R_PC] + pc_offset;
 	update_flags(reg0);
 }
+
+// store a value in a register
+void OP_ST_FUNC(void) {
+	
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
+
+	// write to memory the current program counter register
+	// by the given offset and the value given in reg0
+	mem_write(registers[R_PC] + pc_offset, registers[reg0]);
+}
+
+// store a value indirectly to a register
+// - this happens via a read of the program counter
+// - given an offset, the returned value gives a new
+// - prgoram counter value which is then used to store
+// - the value in the register
+void OP_STI_FUNC(void) {
+	
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);
+
+	mem_write(mem_read(registers[R_PC] + pc_offset), registers[reg0]);
+}
+
+// store a registers value into a different
+// register, given the PC
+void OP_STR_FUNC(void) {
+
+	uint16_t reg0 = (input_str >> 9) & 0x7;
+	uint16_t reg1 = (input_str >> 6) & 0x7;
+
+	uint16_t offset = SIGN_EXTEND(input_str & 0x3F, 6);
+	mem_write(registers[reg1] + offset, registers[reg0]);
+}
+
