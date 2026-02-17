@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
+
 int main(int argc, char** argv) {
 
 	// Loads argument paths for VM images
@@ -33,7 +34,7 @@ int main(int argc, char** argv) {
 	while(running) {
 		
 		// fetch instruction
-		uint16_t input_str = mem_read(registers[R_PC]++);
+		input_str = mem_read(registers[R_PC]++);
 		uint16_t output = input_str >> 12;
 		
 		// based on output (input shifted to the right

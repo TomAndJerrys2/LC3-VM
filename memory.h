@@ -3,6 +3,13 @@
 #define MEMORY_MAX (1 << 16) 
 uint16_t memory[MEMORY_MAX]
 
+#ifndef MEMORY_H
+#define MEMORY_H
+
+extern static uint16_t input_str;
+
+#endif
+
 // LC3 has 10 registers - which isn't that big
 // but this is granted due to its explicit reduction
 // in the instruction set
