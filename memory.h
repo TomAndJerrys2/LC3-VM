@@ -100,5 +100,7 @@ void update_flags(const uint16_t);
 
 /* ===> Trap Function Prototypes <=== */
 void TRAP_PUTS_FUNC(void);
+void TRAP_GETC_FUNC(void);
+void TRAP_OUT_FUNC(void);
 
 #endif
