@@ -39,6 +39,11 @@ uint16_t check_key() {
 }
 
 int main(int argc, char** argv) {
+	
+	// send a signal to handle interput
+	// when input buffering is disabled
+	signal(SIGINT, handle_interrupt);
+	disable_input_buffering();
 
 	// Loads argument paths for VM images
 	if(argc < 2) {
@@ -139,7 +144,9 @@ int main(int argc, char** argv) {
 		}	
 	}
 	
-	SHUTDOWN();
+	// restore input buffering to the 
+	// terminal on system shutdown
+	restore_input_buffering();
 }
 
 // depending if we encounter an immediate mode instruction
@@ -172,4 +179,14 @@ void update_flags(const uint16_t w_val) {
 	else {
 		registers[R_COND] = FL_POS;	
 	}
+}
+
+// handle interput passed by a signal
+// to restore the input buffer on exit
+void handle_interrupt(int signal) {
+	
+	restore_input_buffering();
+	printf('\n');
+
+	exit(-2);
 }
