@@ -123,4 +123,10 @@ int read_image(const char*);
 void mem_write(const uint16_t, const uint16_t);
 uint16_t mem_read(const uint16_t);
 
+/* ===> termios for keyboard access <=== */
+struct termios original_tio;
+
+void disable_input_buffering(void);
+void restore_input_buffering(void);
+
 #endif

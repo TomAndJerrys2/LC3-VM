@@ -1,5 +1,28 @@
 #include "memory.h"
 
+void disable_input_buffering() {
+	
+	// get stdin file attribute and assign it
+	// to our termios struct
+	tcgetattr(STDIN_FILENO, &original_tio);
+
+	// create a copy of the original and modify
+	// it with the keyboard flags
+	struct termios new_tio = original_tio;
+	new_tio.c_lflag &= ~ICANON & ~ECHO;
+
+	// set the new file attributes for 
+	// stdin files
+	tcsetattr(STDIN_FILENO, TCSANOW, &new_tio);
+}
+
+// restores the previous attributes from the
+// termios struct we previous assigned to disable
+// the input buffering
+void restore_input_buffering() {
+	tcsetattr(STDIN_FILENO, TCSANOW, &original_tio);
+}
+
 int main(int argc, char** argv) {
 
 	// Loads argument paths for VM images
