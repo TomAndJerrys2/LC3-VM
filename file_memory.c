@@ -41,3 +41,20 @@ void read_image_file(FILE* file) {
 uint16_t swap16(uint16_t val) {
 	return (x << 8) | (x >> 8);
 }
+
+// to make it easier - a helper function
+// for read_image_file that takes in the path
+// to the files location
+int read_image(const char* image_path) {
+
+	FILE* file = fopen(image_path, "rb");
+	if(!file) {
+		return 0;
+	}
+	
+	// on success load it into our function
+	// close and return exit success.
+	read_image_file(file);
+	fclose(file);
+	return 1;
+}
