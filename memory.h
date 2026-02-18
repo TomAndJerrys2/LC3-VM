@@ -120,4 +120,7 @@ void read_image_file(FILE*);
 uint16_t swap16(uint16_t);
 int read_image(const char*);
 
+void mem_write(const uint16_t, const uint16_t);
+uint16_t mem_read(const uint16_t);
+
 #endif

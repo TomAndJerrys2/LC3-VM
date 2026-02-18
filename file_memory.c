@@ -58,3 +58,31 @@ int read_image(const char* image_path) {
 	fclose(file);
 	return 1;
 }
+
+// write/read to the memory array - accessed as 
+// a sort of "getter/setter" principle
+void mem_write(const uint16_t addr, const uint16_t val) {
+	// checkes the address in memory and
+	// updates it with a key value
+	memory[addr] = val;
+}
+
+uint16_t mem_read(const uint16_t addr) {
+	
+	// if the memory address is the
+	// mapped register for keyboard status
+	if(addr == MR_KBSR) {
+		// we will check the key in
+		// memory
+		if(check_key()) {
+			memory[MR_KBSR] = (1 << 15);
+			memory[MR_KBDR] = getchar();
+		}
+
+		else {
+			memory[MR_KBSR] = 0;
+		}
+	}
+	
+	return memory[addr];
+}
