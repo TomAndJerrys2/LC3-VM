@@ -3,8 +3,18 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
+// important headers
 #include <stdint.h>
 #include <stdio.h>
+
+// relevant headers
+#include <signal.h>
+#include <stdlib.h>
+#include <fnctl.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/termios.h>
+#include <sys/mman.h>
 
 #define MEMORY_MAX (1 << 16) 
 
