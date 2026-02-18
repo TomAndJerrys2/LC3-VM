@@ -129,4 +129,5 @@ struct termios original_tio;
 void disable_input_buffering(void);
 void restore_input_buffering(void);
 
+uint16_t check_key(void);
 #endif
