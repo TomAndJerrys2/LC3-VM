@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/kyle/code/projects/LC3-VM/file_memory.c" "CMakeFiles/LC3VM.dir/file_memory.c.o" "gcc" "CMakeFiles/LC3VM.dir/file_memory.c.o.d"
   "/home/kyle/code/projects/LC3-VM/main.c" "CMakeFiles/LC3VM.dir/main.c.o" "gcc" "CMakeFiles/LC3VM.dir/main.c.o.d"
   "/home/kyle/code/projects/LC3-VM/opcodes.c" "CMakeFiles/LC3VM.dir/opcodes.c.o" "gcc" "CMakeFiles/LC3VM.dir/opcodes.c.o.d"
   "/home/kyle/code/projects/LC3-VM/trap.c" "CMakeFiles/LC3VM.dir/trap.c.o" "gcc" "CMakeFiles/LC3VM.dir/trap.c.o.d"

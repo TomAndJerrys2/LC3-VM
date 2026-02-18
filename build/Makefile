@@ -129,6 +129,30 @@ LC3VM/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/LC3VM.dir/build.make CMakeFiles/LC3VM.dir/build
 .PHONY : LC3VM/fast
 
+file_memory.o: file_memory.c.o
+.PHONY : file_memory.o
+
+# target to build an object file
+file_memory.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LC3VM.dir/build.make CMakeFiles/LC3VM.dir/file_memory.c.o
+.PHONY : file_memory.c.o
+
+file_memory.i: file_memory.c.i
+.PHONY : file_memory.i
+
+# target to preprocess a source file
+file_memory.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LC3VM.dir/build.make CMakeFiles/LC3VM.dir/file_memory.c.i
+.PHONY : file_memory.c.i
+
+file_memory.s: file_memory.c.s
+.PHONY : file_memory.s
+
+# target to generate assembly for a file
+file_memory.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LC3VM.dir/build.make CMakeFiles/LC3VM.dir/file_memory.c.s
+.PHONY : file_memory.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... LC3VM"
+	@echo "... file_memory.o"
+	@echo "... file_memory.i"
+	@echo "... file_memory.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

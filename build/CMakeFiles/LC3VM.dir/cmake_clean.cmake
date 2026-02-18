@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/LC3VM.dir/file_memory.c.o"
+  "CMakeFiles/LC3VM.dir/file_memory.c.o.d"
   "CMakeFiles/LC3VM.dir/main.c.o"
   "CMakeFiles/LC3VM.dir/main.c.o.d"
   "CMakeFiles/LC3VM.dir/opcodes.c.o"

@@ -1,37 +1,43 @@
 #include "memory.h"
 
-registers[R_R7] = registers[R_PC];
+//registers[R_R7] = registers[R_PC];
 
 // each corrosponding trap routine will be
 // implemented into a C function for now, 
 // however - I am curious about a true LC3
 // implementation which is usually done in
 // assembly
-switch(input_str & 0xFF) {
 
-	case TRAP_GETC:
-		TRAP_GETC_FUNC();
-		break;
+void OP_TRAP_FUNC() {
 
-	case TRAP_OUT:
-		TRAP_OUT_FUNC();
-		break;
+	registers[R_R7] = registers[R_PC];
 
-	case TRAP_PUTS:
-		TRAP_PUTS_FUNC();
-		break;
+	switch(input_str & 0xFF) {
 
-	case TRAP_IN:
-		TRAP_IN_FUNC();
-		break;
+		case TRAP_GETC:
+			TRAP_GETC_FUNC();
+			break;
 
-	case TRAP_PUTSP:
-		TRAP_PUTSP_FUNC();
-		break;
+		case TRAP_OUT:
+			TRAP_OUT_FUNC();
+			break;
 
-	case TRAP_HALT:
-		TRAP_HALT_FUNC();
-		break;
+		case TRAP_PUTS:
+			TRAP_PUTS_FUNC();
+			break;
+
+		case TRAP_IN:
+			TRAP_IN_FUNC();
+			break;
+
+		case TRAP_PUTSP:
+			TRAP_PUTSP_FUNC();
+			break;
+
+		case TRAP_HALT:
+			TRAP_HALT_FUNC();
+			break;
+	}
 }
 
 // Trap PUTS is used to ouput a null-terminated
@@ -47,8 +53,8 @@ void TRAP_PUTS_FUNC(void) {
 	// while character holds some value
 	while(*character) {
 		// put the casted character to the standard output
-		puts((char)(*character), stdout);
-		++c;
+		putc((char)(*character), stdout);
+		++character;
 	}
 	
 	// flush the stdout buffer once we have finished
@@ -130,7 +136,7 @@ void TRAP_PUTSP_FUNC(void) {
 		// and compare it against the most signifigant
 		// byte
 		char char_one = (*character) & 0xFF;
-		putc(char1, stdout);
+		putc(char_one, stdout);
 		
 		// "advance" the character by shifting it 
 		// 8 bits to the right as memory is in hex format
@@ -140,7 +146,7 @@ void TRAP_PUTSP_FUNC(void) {
 		
 		// if the next byte hold a value
 		if(char_two)
-			puts(char_two, stdout);
+			putc(char_two, stdout);
 
 		++character;
 	}	

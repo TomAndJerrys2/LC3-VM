@@ -9,4 +9,4 @@ set(src main.c)
 set(CMAKE_C_COMPILER "/usr/bin/clang")
 
 # where to add
-add_executable(LC3VM trap.c opcodes.c main.c)
+add_executable(LC3VM file_memory.c trap.c opcodes.c main.c)

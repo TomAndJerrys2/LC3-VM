@@ -1,5 +1,9 @@
 #include "memory.h"
 
+void BAD_OP_CODE() {
+	abort();
+}
+
 // adding to register values
 void OP_ADD_FUNC(void) {
 
@@ -113,19 +117,19 @@ void OP_JSR_FUNC(void) {
 	
 	uint16_t long_flag = (input_str >> 11) & 1;
 
-	registers[R_R7] = registers[R_PC};
+	registers[R_R7] = registers[R_PC];
 	if(long_flag) {
 		uint16_t long_pc_offset = SIGN_EXTEND(input_str & 0x7FF, 11);
 		registers[R_PC] += long_pc_offset;
 	}
 
 	else {
-		uint16_t registers[R_PC] = registers[R1];
+		registers[R_PC] = registers[R_R1];
 	}
 }
 
 // Load instruction
-void OP_LOAD_FUNC(void) {
+void OP_LD_FUNC(void) {
 	
 	uint16_t reg0 = (input_str >> 9) & 0x7;
 	uint16_t pc_offset = SIGN_EXTEND(input_str & 0x1FF, 9);

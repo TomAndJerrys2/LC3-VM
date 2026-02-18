@@ -1,1 +1,1 @@
-/usr/bin/clang CMakeFiles/LC3VM.dir/trap.c.o CMakeFiles/LC3VM.dir/opcodes.c.o CMakeFiles/LC3VM.dir/main.c.o -o LC3VM 
+/usr/bin/clang CMakeFiles/LC3VM.dir/file_memory.c.o CMakeFiles/LC3VM.dir/trap.c.o CMakeFiles/LC3VM.dir/opcodes.c.o CMakeFiles/LC3VM.dir/main.c.o -o LC3VM 

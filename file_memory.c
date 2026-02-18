@@ -39,7 +39,7 @@ void read_image_file(FILE* file) {
 // swap function for converting val from 
 // big endian to little endian
 uint16_t swap16(uint16_t val) {
-	return (x << 8) | (x >> 8);
+	return (val << 8) | (val >> 8);
 }
 
 // to make it easier - a helper function

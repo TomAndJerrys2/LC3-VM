@@ -10,7 +10,8 @@
 // relevant headers
 #include <signal.h>
 #include <stdlib.h>
-#include <fnctl.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <sys/time.h>
 #include <sys/types.h>
 #include <sys/termios.h>
@@ -18,10 +19,10 @@
 
 #define MEMORY_MAX (1 << 16) 
 
-uint16_t memory[MEMORY_MAX];
+static uint16_t memory[MEMORY_MAX];
 
-extern static uint16_t input_str;
-extern static int running;
+static uint16_t input_str;
+static int running;
 
 // LC3 has 10 registers - which isn't that big
 // but this is granted due to its explicit reduction
@@ -37,16 +38,19 @@ enum {
 	R_R5,
 	R_R6,
 	R_R7,
+	
+	// 1 program counter
+	R_PC,
 
 	// 1 conitional flag register
 	R_COND,
 
-	// 1 Program counter register
+	// 1 Register counter
 	R_COUNT
 };
 
 // store the register values in an array
-uint16_t registers[R_COUNT];
+static uint16_t registers[R_COUNT];
 
 // 16 Op codes for LC3 - each are 12 + 4 bits
 // where the left 4 bits are used to store the code
@@ -75,9 +79,9 @@ enum {
 // LC-3 only has three and evluates logic
 // based on the sign of the previous calc
 enum {
-	FL_POS = 1 << 0; // +ve
-	FL_ZRO = 1 << 0; // zero
-	FL_NEG = 1 << 2; // -ve
+	FL_POS = 1 << 0, // +ve
+	FL_ZRO = 1 << 0, // zero
+	FL_NEG = 1 << 2  // -ve
 };
 
 // TRAP codes for the LC3
@@ -114,6 +118,8 @@ void OP_RES_FUNC (void);
 void OP_LEA_FUNC (void);
 void OP_TRAP_FUNC (void);
 
+void BAD_OP_CODE();
+
 /* ===> Operational Prototypes <=== */
 uint16_t SIGN_EXTEND(uint16_t, const int);
 void update_flags(const uint16_t);
@@ -124,6 +130,7 @@ void TRAP_GETC_FUNC(void);
 void TRAP_OUT_FUNC(void);
 void TRAP_IN_FUNC(void);
 void TRAP_PUTSP_FUNC(void);
+void TRAP_HALT_FUNC(void);
 
 /* ===> Memory & File Prototypes <=== */
 void read_image_file(FILE*);
@@ -134,10 +141,11 @@ void mem_write(const uint16_t, const uint16_t);
 uint16_t mem_read(const uint16_t);
 
 /* ===> termios for keyboard access <=== */
-struct termios original_tio;
+static struct termios original_tio;
 
 void disable_input_buffering(void);
 void restore_input_buffering(void);
-
+void handle_interrupt(int);
 uint16_t check_key(void);
+
 #endif

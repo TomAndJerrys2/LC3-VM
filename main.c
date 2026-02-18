@@ -32,7 +32,7 @@ uint16_t check_key() {
 	FD_SET(STDIN_FILENO, &readfds);
 
 	struct timeval timeout;
-	timeout.tv_set = 0;
+	timeout.tv_sec = 0;
 	timeout.tv_usec = 0;
 
 	return (select(1, &readfds, NULL, NULL, &timeout) != 0);
@@ -48,7 +48,7 @@ int main(int argc, char** argv) {
 	// Loads argument paths for VM images
 	if(argc < 2) {
 		printf("> LC3 [IMAGE_FILE1], [IMAGE_FILE2] ...\n");
-		exit(2);
+		exit(-1);
 	}
 
 	for(size_t j = 1; j < argc; ++j) {
@@ -62,13 +62,13 @@ int main(int argc, char** argv) {
 
 	// one condition flag should only be specified at one 
 	// given moment, hence we set the z flag
-	registers[R_COND] = FL_ZERO;
+	registers[R_COND] = FL_ZRO;
 
 	// set program counter to start pos
 	// 0x3000 is the default address most
 	// LC3 binaries start from
 	enum { PC_START = 0x3000 };
-	registers[R_PC];
+	registers[R_PC] = PC_START;
 
 	running = 1;
 	while(running) {
@@ -186,7 +186,7 @@ void update_flags(const uint16_t w_val) {
 void handle_interrupt(int signal) {
 	
 	restore_input_buffering();
-	printf('\n');
+	printf("\n");
 
 	exit(-2);
 }

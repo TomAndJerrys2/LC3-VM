@@ -69,10 +69,24 @@ include CMakeFiles/LC3VM.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/LC3VM.dir/flags.make
 
+CMakeFiles/LC3VM.dir/file_memory.c.o: CMakeFiles/LC3VM.dir/flags.make
+CMakeFiles/LC3VM.dir/file_memory.c.o: /home/kyle/code/projects/LC3-VM/file_memory.c
+CMakeFiles/LC3VM.dir/file_memory.c.o: CMakeFiles/LC3VM.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/LC3VM.dir/file_memory.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/LC3VM.dir/file_memory.c.o -MF CMakeFiles/LC3VM.dir/file_memory.c.o.d -o CMakeFiles/LC3VM.dir/file_memory.c.o -c /home/kyle/code/projects/LC3-VM/file_memory.c
+
+CMakeFiles/LC3VM.dir/file_memory.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/LC3VM.dir/file_memory.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/kyle/code/projects/LC3-VM/file_memory.c > CMakeFiles/LC3VM.dir/file_memory.c.i
+
+CMakeFiles/LC3VM.dir/file_memory.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/LC3VM.dir/file_memory.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/kyle/code/projects/LC3-VM/file_memory.c -o CMakeFiles/LC3VM.dir/file_memory.c.s
+
 CMakeFiles/LC3VM.dir/trap.c.o: CMakeFiles/LC3VM.dir/flags.make
 CMakeFiles/LC3VM.dir/trap.c.o: /home/kyle/code/projects/LC3-VM/trap.c
 CMakeFiles/LC3VM.dir/trap.c.o: CMakeFiles/LC3VM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/LC3VM.dir/trap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/LC3VM.dir/trap.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/LC3VM.dir/trap.c.o -MF CMakeFiles/LC3VM.dir/trap.c.o.d -o CMakeFiles/LC3VM.dir/trap.c.o -c /home/kyle/code/projects/LC3-VM/trap.c
 
 CMakeFiles/LC3VM.dir/trap.c.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/LC3VM.dir/trap.c.s: cmake_force
 CMakeFiles/LC3VM.dir/opcodes.c.o: CMakeFiles/LC3VM.dir/flags.make
 CMakeFiles/LC3VM.dir/opcodes.c.o: /home/kyle/code/projects/LC3-VM/opcodes.c
 CMakeFiles/LC3VM.dir/opcodes.c.o: CMakeFiles/LC3VM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/LC3VM.dir/opcodes.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/LC3VM.dir/opcodes.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/LC3VM.dir/opcodes.c.o -MF CMakeFiles/LC3VM.dir/opcodes.c.o.d -o CMakeFiles/LC3VM.dir/opcodes.c.o -c /home/kyle/code/projects/LC3-VM/opcodes.c
 
 CMakeFiles/LC3VM.dir/opcodes.c.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/LC3VM.dir/opcodes.c.s: cmake_force
 CMakeFiles/LC3VM.dir/main.c.o: CMakeFiles/LC3VM.dir/flags.make
 CMakeFiles/LC3VM.dir/main.c.o: /home/kyle/code/projects/LC3-VM/main.c
 CMakeFiles/LC3VM.dir/main.c.o: CMakeFiles/LC3VM.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/LC3VM.dir/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/LC3VM.dir/main.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/LC3VM.dir/main.c.o -MF CMakeFiles/LC3VM.dir/main.c.o.d -o CMakeFiles/LC3VM.dir/main.c.o -c /home/kyle/code/projects/LC3-VM/main.c
 
 CMakeFiles/LC3VM.dir/main.c.i: cmake_force
@@ -113,6 +127,7 @@ CMakeFiles/LC3VM.dir/main.c.s: cmake_force
 
 # Object files for target LC3VM
 LC3VM_OBJECTS = \
+"CMakeFiles/LC3VM.dir/file_memory.c.o" \
 "CMakeFiles/LC3VM.dir/trap.c.o" \
 "CMakeFiles/LC3VM.dir/opcodes.c.o" \
 "CMakeFiles/LC3VM.dir/main.c.o"
@@ -120,12 +135,13 @@ LC3VM_OBJECTS = \
 # External object files for target LC3VM
 LC3VM_EXTERNAL_OBJECTS =
 
+LC3VM: CMakeFiles/LC3VM.dir/file_memory.c.o
 LC3VM: CMakeFiles/LC3VM.dir/trap.c.o
 LC3VM: CMakeFiles/LC3VM.dir/opcodes.c.o
 LC3VM: CMakeFiles/LC3VM.dir/main.c.o
 LC3VM: CMakeFiles/LC3VM.dir/build.make
 LC3VM: CMakeFiles/LC3VM.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable LC3VM"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/kyle/code/projects/LC3-VM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable LC3VM"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LC3VM.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
