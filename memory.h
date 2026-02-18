@@ -80,6 +80,12 @@ enum {
 	TRAP_HALT = 0x25   // halt the program
 };
 
+// Memory mapped registers for special devices
+enum {
+	MR_KBSR = 0xFE00, // keyboard status
+	MR_KBDR = 0xFE02  // keyboard data
+};
+
 /* ===> Flag Function Prototypes <=== */
 void OP_BR_FUNC (void);
 void OP_ADD_FUNC (void);
