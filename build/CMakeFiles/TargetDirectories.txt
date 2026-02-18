@@ -1,3 +1,0 @@
-/home/kyle/code/projects/LC3-VM/build/CMakeFiles/LC3VM.dir
-/home/kyle/code/projects/LC3-VM/build/CMakeFiles/edit_cache.dir
-/home/kyle/code/projects/LC3-VM/build/CMakeFiles/rebuild_cache.dir
