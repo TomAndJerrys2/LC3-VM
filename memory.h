@@ -111,5 +111,6 @@ void TRAP_PUTSP_FUNC(void);
 
 /* ===> Memory & File Prototypes <=== */
 void read_image_file(FILE*);
+uint16_t swap16(uint16_t);
 
 #endif
