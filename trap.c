@@ -1,3 +1,5 @@
+#include "memory.h"
+
 registers[R_R7] = registers[R_PC];
 
 // each corrosponding trap routine will be

@@ -4,6 +4,8 @@
 #define MEMORY_H
 
 #include <stdint.h>
+#include <stdio.h>
+
 #define MEMORY_MAX (1 << 16) 
 
 uint16_t memory[MEMORY_MAX];
@@ -106,5 +108,8 @@ void TRAP_GETC_FUNC(void);
 void TRAP_OUT_FUNC(void);
 void TRAP_IN_FUNC(void);
 void TRAP_PUTSP_FUNC(void);
+
+/* ===> Memory & File Prototypes <=== */
+void read_image_file(FILE*);
 
 #endif

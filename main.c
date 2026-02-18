@@ -1,8 +1,5 @@
 #include "memory.h"
 
-#include <stdio.h>
-
-
 int main(int argc, char** argv) {
 
 	// Loads argument paths for VM images
